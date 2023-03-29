@@ -30,14 +30,18 @@
         @else
             <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a href="/cart" class="nav-link"><i class="bi bi-cart"></i></a>
+                <a href="/cart" class="nav-link"><i class="bi bi-cart"></i> Cart</a>
             </li>
+            <li class="nav-item">
+                <span class="nav-link">|</span>
+            </li>
+            
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Hello, {{ auth()->user()->name }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li><a class="dropdown-item" href="/account/{{ auth()->user()->username }}">Account</a></li>
                 <li><a class="dropdown-item" href="#">My Store</a></li>
                 <li><a class="dropdown-item">
                   <form action="/logout" method="post">

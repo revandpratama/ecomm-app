@@ -1,10 +1,14 @@
 <?php
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as IlluRequest;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +41,11 @@ Route::get('/cart', function(){
     ]);
 
 })->middleware('auth');
+
+Route::get('/account/{user}', function(){
+    return view('account.index', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth');
+
+Route::resource('/account', AccountController::class);
