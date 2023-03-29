@@ -12,7 +12,7 @@
     {{-- Bootstrap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
-<body>
+<body style="min-height:100vh" >
     @include('partials.navbar')
         {{-- <div class="d-flex justify-content-center align-item-center w-100">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -38,13 +38,13 @@
             </div>
         </div> --}}
         
-    <div class="container" style="left:0;right:0;width:100%">
+    <div class="container" style="left:0;right:0;width:100%;min-height:100vh">
         @yield('container')
     </div>
 
 
-<div class="container ">
-    <footer class="py-3 my-4 position-absolute bg-body-tertiary" style="left:0;right:0;width:100%">
+<div class="footer">
+    <footer class="py-3 mt-4 bg-body-tertiary position-relative" style="bottom:0;left:0;right:0;width:100%">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
