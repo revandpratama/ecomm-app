@@ -35,17 +35,41 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::get('/cart', function(){
+Route::get('/cart', function () {
     return view('cart', [
-        'cart_items' => Cart::where('user_id' , '=' , auth()->user()->id)->get()
+        'cart_items' => Cart::where('user_id', '=', auth()->user()->id)->get()
     ]);
+})->middleware('auth')->name('cart');
 
-})->middleware('auth');
+Route::put('/cart',  function (IlluRequest $request) {
 
-Route::get('/account/{user}', function(){
+    $id = $request->input('id');
+    $status = $request->input('status');
+    
+    if($status == "inc"){
+        Cart::find($id)->increment('quantity');
+    }else{
+        Cart::find($id)->decrement('quantity');
+    }
+});
+
+Route::get('/account/{user}', function () {
     return view('account.index', [
         'user' => auth()->user()
     ]);
 })->middleware('auth');
 
-Route::resource('/account', AccountController::class);
+
+
+Route::put('account/{user:username}', function (IlluRequest $request, User $username) {
+    $validatedData = $request->validate([
+        'name' => 'required|min:4|max:255',
+        'username' => 'required|unique:users|min:4',
+        'email' => 'required|email:dns'
+    ]);
+
+
+    User::where('username', auth()->user()->username)->update($validatedData);
+
+    return redirect('/account/' . auth()->user()->username)->with('success', 'Account updated');
+})->middleware('auth');

@@ -29,11 +29,11 @@ class DatabaseSeeder extends Seeder
             'quantity' => '2'
         ]);
 
-        Product::create([
-            'name' => 'Dong largerer',
-            'quantity' =>  '20',
-            'price' => '10',
-            'description' => 'this is description'
-        ]);
+        // Product::create([
+        //     'name' => 'Dong largerer',
+        //     'quantity' =>  '20',
+        //     'price' => '10',
+        //     'description' => 'this is description'
+        // ]);
     }
 }
