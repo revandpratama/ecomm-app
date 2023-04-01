@@ -28,6 +28,11 @@ class DatabaseSeeder extends Seeder
             'product_id' => '2',
             'quantity' => '2'
         ]);
+        Cart::create([
+            'user_id' => '11',
+            'product_id' => '1',
+            'quantity' => '5'
+        ]);
 
         // Product::create([
         //     'name' => 'Dong largerer',

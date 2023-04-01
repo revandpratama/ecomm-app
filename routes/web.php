@@ -53,6 +53,12 @@ Route::put('/cart',  function (IlluRequest $request) {
     }
 });
 
+Route::delete('/cart', function (IlluRequest $request){
+
+   Cart::destroy($request->id);
+   
+});
+
 Route::get('/account/{user}', function () {
     return view('account.index', [
         'user' => auth()->user()

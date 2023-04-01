@@ -16,7 +16,7 @@
                         $total = 0;
                     @endphp
                     @foreach ($cart_items as $item)
-                        <tr class="">
+                        <tr class="tablerow">
                             <td style="width:20em"><img class="img-fluid" src="https://source.unsplash.com/400x400"
                                     alt="..."></td>
                             <td style="width:40em">{{ $item->product->name }}</td>
@@ -44,7 +44,8 @@
                             </td>
                             <td style="width:25em"></td>
                             <td style="width:25em">
-                                <button type="submit" class="btn btn-warning btn-sm">Delete</button>
+                                <input type="hidden" name="productId" class="productId" value="{{ $item->id }}">
+                                <button type="submit" class="btn btn-warning btn-sm btn-delete">Delete</button>
                             </td>
                         </tr>
                         @php
@@ -138,19 +139,40 @@
                     success: function(data) {
                         priceValue = priceValue / value;
                         $qtyInput.val(value - 1);
-                        price.val(priceValue * (value - 1)); // calcu
-                        // subTotal = subTotal + (price.val(priceValue * (value + 1)));
+                        price.val(priceValue * (value - 1));
                     }
                 });
             });
 
+
+            $('.btn-delete').click(function (e) { 
+                e.preventDefault();
+                $(this).closest('tr').remove();
+                
+                const productId = $(this).siblings('.productId').val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "delete",
+                    url: "{{ route('cart') }}",
+                    data: {
+                        id: productId
+                    },
+                    success: function (response) {
+                        
+                        
+                    }
+                });
+            });
         });
 
-        // function changePrice() {
-        //     const total = document.querySelector('.total');
-        //     console.log(subTotal);
-        //     total.innerHTML = subTotal;
-        // }
+        
+
+
     </script>
 
 
