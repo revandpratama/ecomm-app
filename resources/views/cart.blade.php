@@ -8,8 +8,7 @@
                     <tr>
                         <td style="width:25em">image</td>
                         <td style="width:40em">name</td>
-                        <td style="width:25em">qty</td>
-                        <td style="width:25em">price</td>
+                        <td style="width:25em" colspan="2">qty</td>
                         <td style="width:10em">action</td>
                     </tr>
                     @php
@@ -32,15 +31,16 @@
                                     <button type="submit" name="subtract" class="badge bg-primary border-0 btn-sub"
                                         value="sub1">-</button>
                                 </form> --}}
+                                <div class="d-flex justify-content-center">
+                                    <button class="inc badge bg-primary border-0 p-2">+</button>
+                                    <input type="text" class="qty-input" value="{{ $item->quantity }}" style="width:2rem">
+                                    <input type="hidden" name="productId" class="productId" value="{{ $item->id }}">
+                                    <input type="hidden" name="price" class="price" value="{{ $item->product->price * $item->quantity }}">
+                                    <button class="dec badge bg-primary border-0 p-2">-</button>
+                                    <span class="ms-4 me-2">$ </span><input type="text" name="" class="price bg-light border-0" value="{{ $item->product->price * $item->quantity }}" style="width:3rem;height:1.5rem" disabled>
 
-                                <button class="inc badge bg-primary border-0 p-2">+</button>
-                                <input type="text" class="qty-input" value="{{ $item->quantity }}" style="width:2rem">
-                                <input type="hidden" name="productId" class="productId" value="{{ $item->id }}">
-                                <input type="hidden" name="price" class="price"
-                                    value="{{ $item->product->price * $item->quantity }}">
-                                <button class="dec badge bg-primary border-0 p-2">-</button>
-                                <input type="text" name="" class="price"
-                                    value="$ {{ $item->product->price * $item->quantity }}" style="width:3rem" disabled>
+                                </div>
+
                             </td>
                             <td style="width:25em"></td>
                             <td style="width:25em">
