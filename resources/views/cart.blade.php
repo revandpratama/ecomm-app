@@ -248,6 +248,30 @@
                     });
                 }
             });
+
+            $('.btn-delete').click(function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+
+                const productId = $(this).siblings('.productId').val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "delete",
+                    url: "{{ route('cart') }}",
+                    data: {
+                        id: productId
+                    },
+                    success: function(response) {
+
+
+                    }
+                });
+            });
         });
     </script>
 
