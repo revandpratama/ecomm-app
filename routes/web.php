@@ -3,11 +3,12 @@
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use GuzzleHttp\Psr7\Request;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request as IlluRequest;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 /*
@@ -27,7 +28,7 @@ Route::get('/', function () {
     ]);
 });
 
-
+// ! User login and registreation
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
@@ -35,6 +36,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
+// ! Cart
 Route::get('/cart', function () {
     return view('cart', [
         'cart_items' => Cart::where('user_id', '=', auth()->user()->id)->get()
@@ -59,6 +61,8 @@ Route::delete('/cart', function (IlluRequest $request){
    
 });
 
+
+// ! Account
 Route::get('/account/{user}', function () {
     return view('account.index', [
         'user' => auth()->user()
@@ -79,3 +83,6 @@ Route::put('account/{user:username}', function (IlluRequest $request, User $user
 
     return redirect('/account/' . auth()->user()->username)->with('success', 'Account updated');
 })->middleware('auth');
+
+
+Route::get('/product/{product:slug}', [ProductController::class, 'show']);

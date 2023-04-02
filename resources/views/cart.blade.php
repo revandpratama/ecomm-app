@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-item-center">
             <div class="col-lg-10">
-                <table class="table align-middle text-center">
+                <table class="table align-middle text-center bg-body-tertiary">
                     <tr>
                         <td style="width:25em">image</td>
                         <td style="width:40em">name</td>

@@ -23,22 +23,28 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Cart::create([
-            'user_id' => '11',
-            'product_id' => '2',
-            'quantity' => '2'
-        ]);
-        Cart::create([
-            'user_id' => '11',
-            'product_id' => '1',
-            'quantity' => '5'
-        ]);
-
-        // Product::create([
-        //     'name' => 'Dong largerer',
-        //     'quantity' =>  '20',
-        //     'price' => '10',
-        //     'description' => 'this is description'
+        // Cart::create([
+        //     'user_id' => '11',
+        //     'product_id' => '2',
+        //     'quantity' => '2'
         // ]);
+        // Cart::create([
+        //     'user_id' => '11',
+        //     'product_id' => '1',
+        //     'quantity' => '5'
+        // ]);
+
+        Product::create([
+            'name' => 'Dong largerer',
+            'quantity' =>  '20',
+            'price' => '10',
+            'description' => 'this is description'
+        ]);
+        Product::create([
+            'name' => 'Buloough',
+            'quantity' =>  '20',
+            'price' => '5',
+            'description' => 'this is description'
+        ]);
     }
 }
