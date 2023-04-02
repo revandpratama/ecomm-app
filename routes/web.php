@@ -84,5 +84,7 @@ Route::put('account/{user:username}', function (IlluRequest $request, User $user
     return redirect('/account/' . auth()->user()->username)->with('success', 'Account updated');
 })->middleware('auth');
 
-
+// ! Product
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);
+
+Route::post('/product', [ProductController::class, 'store'])->middleware('auth');
