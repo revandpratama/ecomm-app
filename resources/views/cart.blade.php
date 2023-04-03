@@ -5,12 +5,7 @@
         <div class="row d-flex justify-content-center align-item-center">
             <div class="col-lg-10">
                 <table class="table align-middle text-center bg-body-tertiary">
-                    <tr>
-                        <td style="width:25em">image</td>
-                        <td style="width:40em">name</td>
-                        <td style="width:25em" colspan="2">qty</td>
-                        <td style="width:10em">action</td>
-                    </tr>
+
                     @php
                         $total = 0;
                     @endphp
@@ -19,7 +14,7 @@
                             <td style="width:20em"><img class="img-fluid" src="https://source.unsplash.com/400x400"
                                     alt="..."></td>
                             <td style="width:40em">{{ $item->product->name }}</td>
-                            <td style="width:25em">
+                            <td style="width:10em">
                                 {{-- <form action="/cart" method="post" enctype="multipart/form-data" id="addSubForm">
                                     @csrf
                                     @method('PUT')
@@ -33,7 +28,7 @@
                                 </form> --}}
                                 <div class="d-flex justify-content-center">
                                     <button class="inc badge bg-primary border-0 p-2">+</button>
-                                    <input type="text" class="qty-input" value="{{ $item->quantity }}" style="width:2rem">
+                                    <input type="text" class="qty-input mx-2" value="{{ $item->quantity }}" style="width:2rem">
                                     <input type="hidden" name="productId" class="productId" value="{{ $item->id }}">
                                     <input type="hidden" name="price" class="price" value="{{ $item->product->price * $item->quantity }}">
                                     <button class="dec badge bg-primary border-0 p-2">-</button>
@@ -42,10 +37,10 @@
                                 </div>
 
                             </td>
-                            <td style="width:25em"></td>
-                            <td style="width:25em">
+                            <td style="width:5em"></td>
+                            <td style="width:5em">
                                 <input type="hidden" name="productId" class="productId" value="{{ $item->id }}">
-                                <button type="submit" class="btn btn-warning btn-sm btn-delete">Delete</button>
+                                <button type="submit" class="btn btn-warning btn-sm btn-delete" onclick="return confirm('Delete this from cart?')"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
                         @php
