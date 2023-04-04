@@ -21,8 +21,10 @@
 </head>
 
 <body style="min-height:100vh">
+    
     @include('partials.navbar')
-    {{-- <div class="d-flex justify-content-center align-item-center w-100">
+
+    <div class="d-flex justify-content-center align-item-center w-100">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                 <div class="carousel-item active" style="max-width: 100%">
@@ -44,7 +46,7 @@
                 <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div> --}}
+        </div>
 
     <div class="container" style="left:0;right:0;width:100%;min-height:100vh">
         @yield('container')

@@ -35,16 +35,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Product::create([
-            'name' => 'Dong largerer',
-            'quantity' =>  '20',
-            'price' => '10',
+            'name' => 'Nice & Tidy',
+            'quantity' =>  '12',
+            'price' => '7',
             'description' => 'this is description'
         ]);
-        Product::create([
-            'name' => 'Buloough',
-            'quantity' =>  '20',
-            'price' => '5',
-            'description' => 'this is description'
-        ]);
+        // Product::create([
+        //     'name' => 'Buloough',
+        //     'quantity' =>  '20',
+        //     'price' => '5',
+        //     'description' => 'this is description'
+        // ]);
     }
 }

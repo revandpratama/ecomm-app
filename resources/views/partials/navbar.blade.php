@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
@@ -56,4 +56,11 @@
         
       </div>
     </div>
+  </nav>
+  <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid d-flex justify-content-around">
+        <span>Fear the known!</span>
+        <span>Fear the known!</span>
+        <span>Fear the known!</span>
+      </div>
   </nav>

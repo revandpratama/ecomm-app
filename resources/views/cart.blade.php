@@ -15,17 +15,7 @@
                                     alt="..."></td>
                             <td style="width:40em">{{ $item->product->name }}</td>
                             <td style="width:10em">
-                                {{-- <form action="/cart" method="post" enctype="multipart/form-data" id="addSubForm">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" name="add" class="badge bg-primary border-0 btn-add"
-                                        value="add1">+</button>
-                                    <input type="text" name="qty" id="" disabled
-                                        value="{{ $item->quantity }}" style="max-width:1em">
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <button type="submit" name="subtract" class="badge bg-primary border-0 btn-sub"
-                                        value="sub1">-</button>
-                                </form> --}}
+                                
                                 <div class="d-flex justify-content-center">
                                     <button class="inc badge bg-primary border-0 p-2">+</button>
                                     <input type="text" class="qty-input mx-2" value="{{ $item->quantity }}" style="width:2rem">
@@ -64,111 +54,7 @@
 @endsection
 
 @section('script')
-    {{-- <script>
-        var subTotal = 0;
-        $(document).ready(function() {
-
-            $('.inc').click(function(e) {
-                e.preventDefault();
-                var productId = $(this).siblings('.productId').val();
-                var status = "inc";
-                var price = $(this).siblings('.price');
-                var priceValue = parseInt(price.val());
-                var $qtyInput = $(this).siblings('.qty-input');
-                var inc_value = $qtyInput.val();
-                var value = parseInt(inc_value, 10);
-                value = isNaN(value) ? 0 : value;
-
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    type: "PUT",
-                    url: "{{ route('cart') }}",
-                    data: {
-                        status: status,
-                        id: productId,
-                    },
-                    success: function(data) {
-                        priceValue = priceValue / value;
-                        $qtyInput.val(value + 1); // increment the quantity value
-                        price.val(priceValue * (value + 1));
-                        // subTotal += priceValue * (value - 1);
-                        // $('.total').text('$ ' + subTotal);
-                    }
-                });
-            });
-
-
-
-            $('.dec').click(function(e) {
-                e.preventDefault();
-
-
-                var productId = $(this).siblings('.productId').val();
-                var status = "dec";
-                var price = $(this).siblings('.price');
-                var priceValue = price.val();
-                var $qtyInput = $(this).siblings('.qty-input');
-                var dec_value = $qtyInput.val();
-                var value = parseInt(dec_value, 10);
-                value = isNaN(value) ? 0 : value;
-
-                if (value > 1) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    $.ajax({
-                        type: "PUT",
-                        url: "{{ route('cart') }}",
-                        data: {
-                            status: status,
-                            id: productId,
-                        },
-                        success: function(data) {
-                            priceValue = priceValue / value;
-                            $qtyInput.val(value - 1);
-                            price.val(priceValue * (value - 1));
-                        }
-                    });
-                }
-
-
-            });
-
-
-            $('.btn-delete').click(function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-
-                const productId = $(this).siblings('.productId').val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    type: "delete",
-                    url: "{{ route('cart') }}",
-                    data: {
-                        id: productId
-                    },
-                    success: function(response) {
-
-
-                    }
-                });
-            });
-        });
-    </script> --}}
+    
 
     <script>
         $(document).ready(function() {

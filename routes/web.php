@@ -26,7 +26,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 
 Route::get('/', function () {
     return view('index', [
-        'products' => Product::latest('created_at')->take(2)->get()
+        'products' => Product::latest('created_at')->take(3)->get()
     ]);
 });
 

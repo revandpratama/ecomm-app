@@ -2,8 +2,10 @@
 @extends('partials.main')
 
 @section('container')
-    <div class="container mt-4 d-flex mx-auto justify-content-evenly flex-wrap">
 
+    <h2 class="mt-5 text-center">New Arrival</h2>
+    <hr class="hr" />
+    <div class="container mt-4 d-flex mx-auto justify-content-evenly flex-wrap">
         @foreach ($products as $product)
         <div class="card mx-5 mb-4" style="width: 18rem;">
             <a href="/product/{{ $product->slug }}" class="text-decoration-none">
