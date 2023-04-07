@@ -1,5 +1,7 @@
 @extends('partials.main')
 
+
+
 @section('container')
     <div class="row d-flex justify-content-center my-5">
         <div class="col-md-5">

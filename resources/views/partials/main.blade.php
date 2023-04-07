@@ -24,29 +24,7 @@
     
     @include('partials.navbar')
 
-    <div class="d-flex justify-content-center align-item-center w-100">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                <div class="carousel-item active" style="max-width: 100%">
-                    <img class="img-fluid" src="https://source.unsplash.com/1500x500?yellow+pajamas" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="https://source.unsplash.com/1500x500?yellow+shorts" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="https://source.unsplash.com/1500x500?iphone" class="d-block w-100" alt="...">
-                </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
+    @yield('carousel')
 
     <div class="container" style="left:0;right:0;width:100%;min-height:100vh">
         @yield('container')

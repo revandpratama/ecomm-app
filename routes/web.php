@@ -69,3 +69,12 @@ Route::get('/product/{product:slug}', [ProductController::class, 'show']);
 
 Route::post('/product', [ProductController::class, 'store'])
 ->middleware('auth');
+
+Route::post('/pay', function(IlluRequest $request){
+    dd($request);
+});
+
+
+Route::get('/add', function () {
+    return view('addProduct');
+});
