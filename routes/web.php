@@ -77,4 +77,4 @@ Route::post('/pay', function(IlluRequest $request){
 
 Route::get('/add', function () {
     return view('addProduct');
-});
+})->middleware('admin');

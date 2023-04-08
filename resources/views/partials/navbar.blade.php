@@ -34,7 +34,7 @@
                 @can('admin')
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="/add" class="nav-link"><i class="bi bi-cart"></i> Add Product</a>
+                            <a href="/add" class="nav-link"><i class="bi bi-plus-circle"></i> Add Product</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-link">|</span>
