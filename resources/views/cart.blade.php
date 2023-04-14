@@ -1,7 +1,17 @@
+
 @extends('partials.authmain')
 
 @section('container')
-    <div class="container">
+
+<div class="container">
+    <div class="row d-flex justify-content-center align-item-center">
+        <div class="col-lg-10">
+            <livewire:cart-index></livewire:cart-index>
+        </div>
+    </div>
+</div>
+
+    {{-- <div class="container">
         <div class="row d-flex justify-content-center align-item-center">
             <div class="col-lg-10">
                 <table class="table align-middle text-center bg-body-tertiary">
@@ -85,18 +95,18 @@
                                 </form>
                                 
                                 {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> --}}
-                            </div>
+                            {{-- </div>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('script')
-    <script>
+    {{-- <script> Final and worked jquery
         $(document).ready(function() {
             var subTotal = {{ $total }}; // initialize the subtotal with the total value
 
@@ -206,7 +216,7 @@
                 finalTotal.val(subTotal);
             });
         });
-    </script>
+    </script> --}}
 
 
     {{-- <script>
