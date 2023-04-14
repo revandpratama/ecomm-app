@@ -57,7 +57,7 @@
                 <div class="modal-footer">
                     {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> --}}
                     <span class="ms-auto">Total: $ {{ $total }}</span>
-                    <form action="/invoice">
+                    <form action="/invoice" method="POST">
                         @csrf
                         <button class="btn btn-primary ms-auto">Pay</button>
                     </form>

@@ -94,3 +94,15 @@ Route::post('/add', function(IlluRequest $request) {
 
     return back()->with('success', 'Product Added');
 })->middleware('admin');
+
+
+Route::post('/invoice', function () {
+
+    //code
+
+    return redirect('/invoice');
+});
+
+Route::get('/invoice', function() {
+    return view('invoice');
+});
