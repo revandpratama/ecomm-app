@@ -78,3 +78,19 @@ Route::post('/pay', function(IlluRequest $request){
 Route::get('/add', function () {
     return view('addProduct');
 })->middleware('admin');
+
+Route::post('/add', function(IlluRequest $request) {
+    
+    $rules = [
+        'name' => 'required|max:50',
+        'description' => 'required|min:10',
+        'price' => 'required',
+        'quantity' => 'required'
+    ];
+
+    $validatedData = $request->validate($rules);
+
+    Product::create($validatedData);
+
+    return back()->with('success', 'Product Added');
+})->middleware('admin');
