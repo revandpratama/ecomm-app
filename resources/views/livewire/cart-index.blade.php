@@ -5,8 +5,7 @@
         @endphp
         @foreach ($items as $item)
             <tr class="tablerow">
-                <td style="width:20em"><img class="img-fluid" src="https://source.unsplash.com/400x400"
-                    alt="..."></td>
+                <td style="width:20rem"><img class="img-fluid" src="https://source.unsplash.com/400x400?clothes" alt="..."></td>
                 <td>{{ $item->product->name }}</td>
                 <td>{{ $item->quantity }}
                     <div class="d-flex justify-content-center flex-wrap">
@@ -32,4 +31,40 @@
                 <td></td>
             </tr>
     </table>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Pay</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label for="payment" class="form-label">Payment Method</label>
+                    <select name="" id="" class="form-control">
+                        <option value="Paypal">Paypal</option>
+                        <option value="Debit">Debit</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> --}}
+                    <span class="ms-auto">Total: $ {{ $total }}</span>
+                    <form action="/invoice">
+                        @csrf
+                        <button class="btn btn-primary ms-auto">Pay</button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

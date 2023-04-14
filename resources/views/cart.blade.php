@@ -1,15 +1,35 @@
-
 @extends('partials.authmain')
 
 @section('container')
+    <div class="container my-5">
+        <div class="row d-flex justify-content-center align-item-center">
+            <div class="col-lg-10">
+                <livewire:cart-index></livewire:cart-index>
 
-<div class="container">
-    <div class="row d-flex justify-content-center align-item-center">
-        <div class="col-lg-10">
-            <livewire:cart-index></livewire:cart-index>
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-primary btn-lg payment" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Pay
+                </button>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="position-fixed bg-info p-3 modalPay"
+        style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 50%;visibility:hidden">
+        <h2>Pay</h2>
+        <hr>
+        <label for="payment" class="form-label">Payment Method</label>
+        <select name="" id="" class="form-control">
+            <option value="Paypal">Paypal</option>
+            <option value="Debit">Debit</option>
+            <option value="Credit Card">Credit Card</option>
+        </select>
+        <hr>
+        <span>Total: {{ session()->get('total') }}</span>
+        <button class="btn btn-sm btn-primary ms-auto">Pay</button>
+    </div>
+
+    
 
     {{-- <div class="container">
         <div class="row d-flex justify-content-center align-item-center">
@@ -95,7 +115,7 @@
                                 </form>
                                 
                                 {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> --}}
-                            {{-- </div>
+    {{-- </div>
 
                         </div>
                     </div>
