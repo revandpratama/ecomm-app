@@ -96,10 +96,14 @@ Route::post('/add', function(IlluRequest $request) {
 })->middleware('admin');
 
 
-Route::post('/invoice', function () {
+Route::post('/invoice', function (IlluRequest $request) {
 
-    //code
-
+    $validatedData = $request->validate([
+        'user_id' => 'required',
+        'total' => 'required',
+        'payment_method' => 'required'
+    ]);
+    
     return redirect('/invoice');
 });
 
