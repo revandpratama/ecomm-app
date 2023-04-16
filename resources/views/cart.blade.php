@@ -6,10 +6,7 @@
             <div class="col-lg-10">
                 <livewire:cart-index></livewire:cart-index>
 
-                <!-- Button to Open the Modal -->
-                <button type="button" class="btn btn-primary btn-lg payment" data-bs-toggle="modal" data-bs-target="#myModal">
-                    Pay
-                </button>
+
             </div>
         </div>
     </div>
@@ -29,7 +26,7 @@
         <button class="btn btn-sm btn-primary ms-auto">Pay</button>
     </div>
 
-    
+
 
     {{-- <div class="container">
         <div class="row d-flex justify-content-center align-item-center">

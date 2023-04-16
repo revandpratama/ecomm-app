@@ -30,47 +30,52 @@ Route::get('/', function () {
     ]);
 });
 
+Route::middleware('auth')->group(function () {
+    
+    // ! Cart
+    Route::get('/cart', [CartController::class, 'index'])
+        ->middleware('auth')->name('cart');
+
+    Route::put('/cart',  [CartController::class, 'edit'])
+        ->middleware('auth');
+
+    Route::delete('/cart', [CartController::class, 'destroy'])
+        ->middleware('auth');
+});
+
 // ! User login and registreation
 Route::get('/login', [LoginController::class, 'index'])
-->middleware('guest')->name('login');
+    ->middleware('guest')->name('login');
 
 Route::post('/login', [LoginController::class, 'authenticate'])
-->middleware('guest');
+    ->middleware('guest');
 
 Route::post('/logout', [LoginController::class, 'logout'])
-->middleware('auth');
+    ->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index'])
-->middleware('guest');
+    ->middleware('guest');
 
 Route::post('/register', [RegisterController::class, 'store'])
-->middleware('guest');
+    ->middleware('guest');
 
-// ! Cart
-Route::get('/cart', [CartController::class, 'index'])
-->middleware('auth')->name('cart');
 
-Route::put('/cart',  [CartController::class, 'edit'])
-->middleware('auth');
-
-Route::delete('/cart', [CartController::class, 'destroy'])
-->middleware('auth');
 
 
 // ! Account
 Route::get('/account/{user}', [AccountController::class, 'show'])
-->middleware('auth');
+    ->middleware('auth');
 
 Route::put('account/{user:username}', [AccountController::class, 'edit'])
-->middleware('auth');
+    ->middleware('auth');
 
 // ! Product
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);
 
 Route::post('/product', [ProductController::class, 'store'])
-->middleware('auth');
+    ->middleware('auth');
 
-Route::post('/pay', function(IlluRequest $request){
+Route::post('/pay', function (IlluRequest $request) {
     dd($request);
 });
 
@@ -79,8 +84,8 @@ Route::get('/add', function () {
     return view('addProduct');
 })->middleware('admin');
 
-Route::post('/add', function(IlluRequest $request) {
-    
+Route::post('/add', function (IlluRequest $request) {
+
     $rules = [
         'name' => 'required|max:50',
         'description' => 'required|min:10',
@@ -103,10 +108,10 @@ Route::post('/invoice', function (IlluRequest $request) {
         'total' => 'required',
         'payment_method' => 'required'
     ]);
-    
+
     return redirect('/invoice');
 });
 
-Route::get('/invoice', function() {
+Route::get('/invoice', function () {
     return view('invoice');
 });

@@ -1,3 +1,5 @@
+
+
 <div class="mb-5">
     <table class="table align-middle text-center bg-body-tertiary">
         @php
@@ -29,13 +31,30 @@
                 </td>
             </tr>
         @endforeach
-        <tr>
-            <td colspan="3">Total</td>
-            <td>$ {{ $total }}</td>
-            <td></td>
-        </tr>
-    </table>
 
+        @if (count($items))
+            <tr>
+                <td colspan="3">Total</td>
+                <td>$ {{ $total }}</td>
+                <td></td>
+            </tr>
+        @else
+            <h4 class="text-center text-decoration-none my-5">Cart Empty :(
+                
+            </h4>
+            <h6 class="text-center">
+                <a href="/" class="text-decoration-none text-dark"><- Main Page</a>
+            </h6>
+            
+        @endif
+
+    </table>
+    @if (count($items))
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary btn-lg payment" data-bs-toggle="modal" data-bs-target="#myModal">
+        Pay
+    </button>
+    @endif
     <!-- The Modal -->
     <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -52,14 +71,14 @@
                     <label for="payment" class="form-label">Payment Method</label>
                     <form action="/invoice" method="POST" id="payForm">
                         @csrf
-                        
+
                         <select name="payment_method" id="" class="form-control">
                             <option value="Paypal">Paypal</option>
                             <option value="Debit">Debit</option>
                             <option value="Credit Card">Credit Card</option>
                         </select>
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                        <input type="hidden" name="product_name" value="{{  }}">
+                        {{-- <input type="hidden" name="product_name" value="{{ $product->name }}"> --}}
                         <input type="hidden" name="total" value="{{ $total }}">
                     </form>
                 </div>
